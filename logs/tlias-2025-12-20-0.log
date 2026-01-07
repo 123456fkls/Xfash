@@ -1,0 +1,16 @@
+2025-12-20 21:06:55.930 [main] INFO  com.example.xfash.DemoApplication-Starting DemoApplication using Java 17.0.12 with PID 15960 (D:\XFsh-project\demo\target\classes started by NUOQIDEKALITE in D:\XFsh-project)
+2025-12-20 21:06:55.931 [main] INFO  com.example.xfash.DemoApplication-No active profile set, falling back to 1 default profile: "default"
+2025-12-20 21:06:56.681 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port 8080 (http)
+2025-12-20 21:06:56.691 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-20 21:06:56.691 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2025-12-20 21:06:56.691 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-12-20 21:06:56.732 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2025-12-20 21:06:56.733 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 752 ms
+2025-12-20 21:06:57.167 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8080"]
+2025-12-20 21:06:57.184 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port 8080 (http) with context path '/'
+2025-12-20 21:06:57.190 [main] INFO  com.example.xfash.DemoApplication-Started DemoApplication in 1.608 seconds (process running for 2.314)
+2025-12-20 21:07:01.594 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-20 21:07:01.595 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2025-12-20 21:07:01.596 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 1 ms
+2025-12-20 21:07:22.170 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown-Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-20 21:07:22.277 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown-Graceful shutdown complete

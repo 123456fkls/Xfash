@@ -1,0 +1,66 @@
+2025-11-26 19:47:37.316 [main] INFO  com.example.xfash.DemoApplication-Starting DemoApplication using Java 17.0.12 with PID 19244 (D:\XFsh-project\demo\target\classes started by NUOQIDEKALITE in D:\XFsh-project)
+2025-11-26 19:47:37.318 [main] INFO  com.example.xfash.DemoApplication-No active profile set, falling back to 1 default profile: "default"
+2025-11-26 19:47:38.081 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port 8080 (http)
+2025-11-26 19:47:38.091 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-26 19:47:38.092 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2025-11-26 19:47:38.093 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-26 19:47:38.139 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2025-11-26 19:47:38.140 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 780 ms
+2025-11-26 19:47:38.569 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8080"]
+2025-11-26 19:47:38.585 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port 8080 (http) with context path '/'
+2025-11-26 19:47:38.593 [main] INFO  com.example.xfash.DemoApplication-Started DemoApplication in 1.621 seconds (process running for 2.795)
+2025-11-26 19:47:43.294 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-26 19:47:43.294 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2025-11-26 19:47:43.295 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 1 ms
+2025-11-26 19:47:43.321 [http-nio-8080-exec-2] INFO  com.example.xfash.Controller.DeptController-查看全部部门信息：
+2025-11-26 19:47:43.334 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Starting...
+2025-11-26 19:47:43.614 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.pool.HikariPool-HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@673ae998
+2025-11-26 19:47:43.616 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Start completed.
+2025-11-26 19:48:54.098 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown-Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-26 19:48:54.197 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown-Graceful shutdown complete
+2025-11-26 19:48:54.200 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Shutdown initiated...
+2025-11-26 19:48:54.206 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Shutdown completed.
+2025-11-26 19:48:58.011 [main] INFO  com.example.xfash.DemoApplication-Starting DemoApplication using Java 17.0.12 with PID 3008 (D:\XFsh-project\demo\target\classes started by NUOQIDEKALITE in D:\XFsh-project)
+2025-11-26 19:48:58.013 [main] INFO  com.example.xfash.DemoApplication-No active profile set, falling back to 1 default profile: "default"
+2025-11-26 19:48:58.649 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port 8080 (http)
+2025-11-26 19:48:58.657 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-26 19:48:58.659 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2025-11-26 19:48:58.659 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-26 19:48:58.699 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2025-11-26 19:48:58.699 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 655 ms
+2025-11-26 19:48:59.057 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8080"]
+2025-11-26 19:48:59.070 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port 8080 (http) with context path '/'
+2025-11-26 19:48:59.076 [main] INFO  com.example.xfash.DemoApplication-Started DemoApplication in 1.359 seconds (process running for 1.973)
+2025-11-26 19:49:09.030 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-26 19:49:09.030 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2025-11-26 19:49:09.031 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 1 ms
+2025-11-26 19:49:09.055 [http-nio-8080-exec-1] INFO  com.example.xfash.Controller.DeptController-查看全部部门信息：
+2025-11-26 19:49:09.066 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Starting...
+2025-11-26 19:49:09.279 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.pool.HikariPool-HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@30845cf8
+2025-11-26 19:49:09.280 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Start completed.
+2025-11-26 19:49:57.517 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown-Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-26 19:49:57.609 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown-Graceful shutdown complete
+2025-11-26 19:49:57.613 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Shutdown initiated...
+2025-11-26 19:49:57.619 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Shutdown completed.
+2025-11-26 19:51:07.883 [main] INFO  com.example.xfash.DemoApplication-Starting DemoApplication using Java 17.0.12 with PID 6872 (D:\XFsh-project\demo\target\classes started by NUOQIDEKALITE in D:\XFsh-project)
+2025-11-26 19:51:07.885 [main] INFO  com.example.xfash.DemoApplication-No active profile set, falling back to 1 default profile: "default"
+2025-11-26 19:51:08.566 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer-Tomcat initialized with port 8080 (http)
+2025-11-26 19:51:08.575 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-26 19:51:08.576 [main] INFO  org.apache.catalina.core.StandardService-Starting service [Tomcat]
+2025-11-26 19:51:08.576 [main] INFO  org.apache.catalina.core.StandardEngine-Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-26 19:51:08.617 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring embedded WebApplicationContext
+2025-11-26 19:51:08.617 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext-Root WebApplicationContext: initialization completed in 699 ms
+2025-11-26 19:51:09.013 [main] INFO  org.apache.coyote.http11.Http11NioProtocol-Starting ProtocolHandler ["http-nio-8080"]
+2025-11-26 19:51:09.027 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer-Tomcat started on port 8080 (http) with context path '/'
+2025-11-26 19:51:09.033 [main] INFO  com.example.xfash.DemoApplication-Started DemoApplication in 1.445 seconds (process running for 2.022)
+2025-11-26 19:51:09.640 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]-Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-26 19:51:09.641 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet-Initializing Servlet 'dispatcherServlet'
+2025-11-26 19:51:09.642 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet-Completed initialization in 1 ms
+2025-11-26 19:51:09.668 [http-nio-8080-exec-2] INFO  com.example.xfash.Controller.DeptController-查看全部部门信息：
+2025-11-26 19:51:09.681 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Starting...
+2025-11-26 19:51:09.921 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.pool.HikariPool-HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e142035
+2025-11-26 19:51:09.922 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Start completed.
+2025-11-26 19:51:26.347 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown-Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-26 19:51:26.447 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown-Graceful shutdown complete
+2025-11-26 19:51:26.449 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Shutdown initiated...
+2025-11-26 19:51:26.455 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource-HikariPool-1 - Shutdown completed.
