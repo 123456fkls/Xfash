@@ -11,10 +11,10 @@ import java.util.List;
 public interface EmpMapper {
 //    查询所有员工信息记录数
     @Select("select count(*) from emp left join dept on emp.dept_id = dept.id")
-    public Lang count();
+    public Long count();
 //    查询所有员工信息(分页)
-    @Select("select emp.*,dept.name from emp left join dept on emp.dept_id = dept.id " +
-            "order by emp.update_time " +
+    @Select("select emp.*,dept.name deptName from emp left join dept on emp.dept_id = dept.id " +
+            "order by emp.update_time desc " +
             "limit #{start},#{pageSize}")
     public List<Emp> list(Integer start,Integer pageSize);
 }
