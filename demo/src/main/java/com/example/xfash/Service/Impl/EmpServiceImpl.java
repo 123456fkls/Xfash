@@ -3,6 +3,7 @@ package com.example.xfash.Service.Impl;
 import com.example.xfash.Mapper.EmpMapper;
 import com.example.xfash.Service.EmpService;
 import com.example.xfash.pojo.Emp;
+import com.example.xfash.pojo.EmpQueryParam;
 import com.example.xfash.pojo.PageResult;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.Long;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -27,11 +29,11 @@ public class EmpServiceImpl implements EmpService {
 //        return new PageResult<Emp>(total,rows);
   //  }
     //PageHelper分页查询
-public PageResult<Emp> page(Integer page, Integer pageSize) {
+public PageResult<Emp> page(EmpQueryParam empQueryParam) {
     //设置分页参数
-    PageHelper.startPage(page,pageSize);
+    PageHelper.startPage(empQueryParam.getPage(),empQueryParam.getPageSize());
     //执行查询
-    List<Emp> empList = empMapper.list();
+    List<Emp> empList = empMapper.list(empQueryParam);
     //解析结果并封装数据
     Page<Emp> p = (Page<Emp>) empList;
     return new PageResult<Emp>(p.getTotal(),p.getResult());

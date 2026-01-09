@@ -1,10 +1,12 @@
 package com.example.xfash.Mapper;
 
 import com.example.xfash.pojo.Emp;
+import com.example.xfash.pojo.EmpQueryParam;
 import org.apache.ibatis.annotations.Lang;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -18,7 +20,7 @@ public interface EmpMapper {
 //            "order by emp.update_time desc " +
 //            "limit #{start},#{pageSize}")
 //    public List<Emp> list(Integer start,Integer pageSize);
-    @Select("select emp.*,dept.name deptName from emp left join dept on emp.dept_id = dept.id " +
-            "order by emp.update_time desc ")
-    public List<Emp> list();
+//    @Select("select emp.*,dept.name deptName from emp left join dept on emp.dept_id = dept.id " +
+//            "order by emp.update_time desc ")
+    public List<Emp> list(EmpQueryParam empQueryParam);
 }
