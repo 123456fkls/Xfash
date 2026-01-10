@@ -10,9 +10,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class EmpExpr {
     private Integer id;
-    private String empId;
+    private Integer empId;
     private LocalDate begin;
     private LocalDate end;
     private String company;
-    private String jon;
+    private String job;
 }
