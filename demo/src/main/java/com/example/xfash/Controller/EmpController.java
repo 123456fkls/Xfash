@@ -30,5 +30,4 @@ public class EmpController {
         empService.save(emp);
         return Result.success();
     }
-
 }
