@@ -46,7 +46,7 @@ public class EmpServiceImpl implements EmpService {
         Page<Emp> p = (Page<Emp>) empList;
         return new PageResult<Emp>(p.getTotal(), p.getResult());
     }
-
+    //新增员工
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void save(Emp emp) {
@@ -63,5 +63,15 @@ public class EmpServiceImpl implements EmpService {
             });
             empExprMapper.insertBatch(exprList);
         }
+    }
+    //删除员工
+@Transactional(rollbackFor = Exception.class)
+    @Override
+    public void delete(List<Integer> ids) {
+        //删除员工基本信息
+        empMapper.deleteByIds(ids);
+        //删除员工工作信息
+        empExprMapper.deleteByEmpIds(ids);
+
     }
 }

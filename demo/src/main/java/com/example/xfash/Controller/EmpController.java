@@ -11,23 +11,44 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 @Slf4j
 @RestController
 @RequestMapping("/emps")
 public class EmpController {
+    //查询
     @Autowired
     private EmpService empService;
+
     @GetMapping
-    public Result page(EmpQueryParam empQueryParam){
-        log.info("分页查询:{}",empQueryParam);
-        PageResult< Emp> pageResult = empService.page(empQueryParam);
+    public Result page(EmpQueryParam empQueryParam) {
+        log.info("分页查询:{}", empQueryParam);
+        PageResult<Emp> pageResult = empService.page(empQueryParam);
         return Result.success(pageResult);
     }
+
+    //新增
     @PostMapping
-    public Result save(@RequestBody Emp emp){
-        log.info("新增员工:{}",emp);
+    public Result save(@RequestBody Emp emp) {
+        log.info("新增员工:{}", emp);
         empService.save(emp);
         return Result.success();
     }
+
+    //删除(数组)
+//    @DeleteMapping
+//    public Result delete(Integer[] ids) {
+//        log.info("删除员工:{}", Arrays.toString(ids));
+//        return Result.success();
+//    }
+    //删除（集合）、
+    @DeleteMapping
+    public Result delete(@RequestParam List<Integer> ids) {
+        log.info("删除员工:{}", ids);
+        empService.delete(ids);
+        return Result.success();
+    }
+
 }

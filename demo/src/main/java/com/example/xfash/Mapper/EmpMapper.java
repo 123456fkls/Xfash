@@ -26,4 +26,7 @@ public interface EmpMapper {
     @Insert("insert into emp (username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time)" +
              "values (#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
     void insert(Emp emp);
+//删除员工
+
+    void deleteByIds(List<Integer> ids);
 }
