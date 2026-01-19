@@ -29,8 +29,10 @@ public interface EmpMapper {
 //删除员工
 
     void deleteByIds(List<Integer> ids);
-
+//修改员工（查询员工回显）
     Emp getById(Integer id);
+//修改员工
+    void update(Emp emp);
 
 
 //    Emp getById(Integer id);

@@ -17,6 +17,7 @@ import org.springframework.util.CollectionUtils;
 import java.lang.Long;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -76,11 +77,31 @@ public class EmpServiceImpl implements EmpService {
         empExprMapper.deleteByEmpIds(ids);
 
     }
-
-
-
+    //修改员工（查询员工回显）
     @Override
     public Emp getInfo(Integer id) {
         return empMapper.getById(id);
     }
+    //修改信息
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void update(Emp emp) {
+        emp.setUpdateTime(LocalDateTime.now());
+        //修改员工基本信息
+        empMapper.update(emp);
+        //修改员工工作信息
+        //先删除
+        empExprMapper.deleteByEmpIds(Arrays.asList(emp.getId()));
+        //后添加
+        List<EmpExpr> exprList = emp.getExprList();
+        if (!CollectionUtils.isEmpty(exprList)) {
+            //遍历集合，为empid赋值
+            exprList.forEach(expr -> {
+                expr.setEmpId(emp.getId());
+            });
+            empExprMapper.insertBatch(exprList);
+        }
+    }
 }
+
+

@@ -50,13 +50,22 @@ public class EmpController {
         empService.delete(ids);
         return Result.success();
     }
-    //修改
-    //查询回显
+    //修改（1）
+    // 查询回显
     @GetMapping ("/{id}")
     public Result getInfo(@PathVariable Integer id ) {
         log.info("根据Id查询员工:{}", id);
         Emp emp = empService.getInfo(id);
         return Result.success(emp);
     }
+    //修改（2）
+    @PutMapping
+    public Result update(@RequestBody Emp emp) {
+        log.info("修改员工:{}", emp);
+        empService.update(emp);
+        return Result.success();
+    }
+
+
 
 }
