@@ -25,7 +25,8 @@ public class Result {
     public static Result error(String msg) {
         Result result = new Result();
         result.code = 0;
-        result.msg = "操作失败";
+        result.msg = msg;
         return result;
     }
+
 }
