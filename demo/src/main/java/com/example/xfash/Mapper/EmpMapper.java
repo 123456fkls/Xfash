@@ -6,10 +6,11 @@ import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface EmpMapper {
-//----------------------------------原始分页 ----------------------------------
+    //----------------------------------原始分页 ----------------------------------
 //    查询所有员工信息记录数
 //    @Select("select count(*) from emp left join dept on emp.dept_id = dept.id")
 //    public Long count();
@@ -21,19 +22,25 @@ public interface EmpMapper {
 //    @Select("select emp.*,dept.name deptName from emp left join dept on emp.dept_id = dept.id " +
 //            "order by emp.update_time desc ")
     public List<Emp> list(EmpQueryParam empQueryParam);
-//新增员工
-    @Options(useGeneratedKeys = true,  keyProperty = "id")// Mybatis知识点-----------获取自增主键
+
+    //新增员工
+    @Options(useGeneratedKeys = true, keyProperty = "id")// Mybatis知识点-----------获取自增主键
     @Insert("insert into emp (username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time)" +
-             "values (#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
+            "values (#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
     void insert(Emp emp);
 //删除员工
 
     void deleteByIds(List<Integer> ids);
-//修改员工（查询员工回显）
+
+    //修改员工（查询员工回显）
     Emp getById(Integer id);
-//修改员工
+
+    //修改员工
     void update(Emp emp);
 
+    @MapKey("pos")
+    List<Map<String, Object>> countEmpJoData();
 
-//    Emp getById(Integer id);
+    @MapKey("name")
+    List<Map<String, Object>> countEmpGenderData();
 }
