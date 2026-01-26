@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xfash.Mapper.ClazzMapper">
+    <insert id="add">
+        insert into clazz(name, room, begin_date, end_date, master_id, subject, create_time, update_time)
+        values(#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject}, #{createTime}, #{updateTime})
+    </insert>
+    <update id="update">
+        update clazz
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="room != null">room = #{room},</if>
+            <if test="beginDate != null">begin_date = #{beginDate},</if>
+            <if test="endDate != null">end_date = #{endDate},</if>
+            <if test="masterId != null">master_id = #{masterId},</if>
+            <if test="subject != null">subject = #{subject},</if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from clazz where id = #{id}
+    </delete>
+
+    <select id="list" resultType="com.example.xfash.pojo.Clazz">
+        SELECT
+        clazz.id,
+        clazz.name,
+        clazz.room,
+        clazz.begin_date,
+        clazz.end_date,
+        clazz.master_id,
+        clazz.create_time,
+        clazz.update_time,
+        emp.name as master_name,
+        CASE
+        WHEN NOW() &gt; clazz.end_date THEN '已结课'
+        WHEN NOW() &lt; clazz.begin_date THEN '未开班'
+        ELSE '在读中'
+        END as status
+        FROM clazz
+        LEFT JOIN emp ON clazz.master_id = emp.id
+        <where>
+            <if test="name != null">
+                clazz.name like concat('%',#{name},'%')
+            </if>
+            <if test="begin!=null and end!=null">
+                and clazz.begin_date between #{begin} and #{end}
+            </if>
+        </where>
+        ORDER BY clazz.update_time DESC
+    </select>
+    <select id="getById" resultType="com.example.xfash.pojo.Clazz">
+        <!--        根据id查询-->
+        <![CDATA[
+        SELECT
+        clazz.id,
+        clazz.name,
+        clazz.room,
+        clazz.begin_date,
+        clazz.end_date,
+        clazz.master_id,
+        clazz.subject,
+        clazz.create_time,
+        clazz.update_time,
+        emp.name as master_name,
+        CASE
+        WHEN NOW() > clazz.end_date THEN '已结课'
+        WHEN NOW() < clazz.begin_date THEN '未开班'
+        ELSE '在读中'
+        END as status
+        FROM clazz
+        LEFT JOIN emp ON clazz.master_id = emp.id
+        WHERE clazz.id = #{id}
+        ]]>
+    </select>
+</mapper>

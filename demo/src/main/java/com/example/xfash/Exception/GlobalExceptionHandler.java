@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     public Result handleException(Exception e) {
-        log.error("出错啦!你现在满意了吧！", e);
-        return Result.error("超级无敌宇宙大错误");
+        log.error("出错啦!再检查一下吧0v0", e);
+        return Result.error("出现错误，请再检查一下");
     }
 }
