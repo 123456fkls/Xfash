@@ -53,4 +53,11 @@ public class ClazzController {
         clazzService.delete(id);
         return Result.success();
     }
+    //查询所有班级
+    @GetMapping("/list")
+    public Result list() {
+        log.info("查询所有班级");
+        List<Clazz> clazzList = clazzService.list();
+        return Result.success(clazzList);
+    }
 }

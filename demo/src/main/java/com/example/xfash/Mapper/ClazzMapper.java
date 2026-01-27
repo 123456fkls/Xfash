@@ -21,4 +21,6 @@ public interface ClazzMapper {
 
     //删
     void delete(Integer id);
+
+    List<Clazz> clazzlist();
 }

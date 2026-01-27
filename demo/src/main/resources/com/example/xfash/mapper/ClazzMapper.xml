@@ -75,4 +75,7 @@
         WHERE clazz.id = #{id}
         ]]>
     </select>
+    <select id="clazzlist" resultType="com.example.xfash.pojo.Clazz">
+       select * from clazz
+    </select>
 </mapper>

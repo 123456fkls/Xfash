@@ -29,19 +29,22 @@ public class ClazzServiceImpl implements ClazzService {
         return new PageResult<Clazz>(p.getTotal(), p.getResult());
 
     }
-//增
+
+    //增
     @Override
     public void add(Clazz clazz) {
         clazz.setCreateTime(LocalDateTime.now());
         clazz.setUpdateTime(LocalDateTime.now());
         clazzMapper.add(clazz);
     }
-//根据id查询
+
+    //根据id查询
     @Override
     public Clazz getById(Integer id) {
         return clazzMapper.getById(id);
     }
-//改
+
+    //改
     @Override
     public void update(Clazz clazz) {
         clazz.setUpdateTime(LocalDateTime.now());
@@ -51,6 +54,11 @@ public class ClazzServiceImpl implements ClazzService {
     @Override
     public void delete(Integer id) {
         clazzMapper.delete(id);
+    }
 
+    //查询所有班级
+    @Override
+    public List<Clazz> list() {
+        return clazzMapper.clazzlist();
     }
 }

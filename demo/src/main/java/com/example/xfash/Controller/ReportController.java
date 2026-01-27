@@ -1,6 +1,7 @@
 package com.example.xfash.Controller;
 
 import com.example.xfash.Service.ReportService;
+import com.example.xfash.pojo.ClassOption;
 import com.example.xfash.pojo.JobOption;
 import com.example.xfash.pojo.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -31,5 +32,19 @@ public class ReportController {
         log.info("生成员工性别数据统计报表");
         List<Map<String,Object>> genderlist = reportService.getEmpGenderData();
         return Result.success(genderlist);
+    }
+    //学生学历数据统计报表
+    @GetMapping("/studentDegreeData")
+    public Result getStudentDegreeData() {
+        log.info("生成学生学历数据统计报表");
+        List<Map<String,Object>> degreeList = reportService.getStudentDegreeData();
+        return Result.success(degreeList);
+    }
+    //学生班级数据统计报表
+    @GetMapping("/studentCountData")
+    public Result getStudentClassData() {
+        log.info("生成学生班级数据统计报表");
+         ClassOption classOption = reportService.getStudentClassData();
+        return Result.success(classOption);
     }
 }
