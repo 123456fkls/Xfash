@@ -2,6 +2,7 @@ package com.example.xfash.Service;
 
 import com.example.xfash.pojo.Emp;
 import com.example.xfash.pojo.EmpQueryParam;
+import com.example.xfash.pojo.LoginInfo;
 import com.example.xfash.pojo.PageResult;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,4 +22,6 @@ public interface EmpService {
     void update(Emp emp);
 
     List<Emp> list();
+
+    LoginInfo login(Emp emp);
 }

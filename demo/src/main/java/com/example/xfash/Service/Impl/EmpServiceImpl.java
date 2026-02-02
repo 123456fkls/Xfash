@@ -3,12 +3,11 @@ package com.example.xfash.Service.Impl;
 import com.example.xfash.Mapper.EmpExprMapper;
 import com.example.xfash.Mapper.EmpMapper;
 import com.example.xfash.Service.EmpService;
-import com.example.xfash.pojo.Emp;
-import com.example.xfash.pojo.EmpExpr;
-import com.example.xfash.pojo.EmpQueryParam;
-import com.example.xfash.pojo.PageResult;
+import com.example.xfash.Utils.JwtUtils;
+import com.example.xfash.pojo.*;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +18,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
+@Slf4j
 @Service
 public class EmpServiceImpl implements EmpService {
     @Autowired
@@ -106,6 +107,24 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public List<Emp> list() {
         return empMapper.empList();
+    }
+
+    @Override
+    public LoginInfo login(Emp emp) {
+        //调用接口根据用户名和密码查询员工
+        Emp e = empMapper.getByUsernameAndPassword(emp);
+        //判断是否存在这个员工
+        if (e != null) {
+            log.info("登录成功：{}", e);
+            //生成jwt令牌
+            Map<String, Object> claims = Map.of("id", e.getId(), "username", e.getUsername(), "name", e.getName());
+            String jwt = JwtUtils.generateToken(claims);
+
+            return new LoginInfo(e.getId(), e.getUsername(), e.getName(), jwt);
+        }
+        //不存在返回null
+        return null;
+
     }
 }
 
