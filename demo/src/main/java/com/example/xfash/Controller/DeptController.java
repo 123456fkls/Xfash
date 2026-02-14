@@ -1,5 +1,6 @@
 package com.example.xfash.Controller;
 
+import com.example.xfash.Anno.Log;
 import com.example.xfash.Service.DeptService;
 import com.example.xfash.pojo.Dept;
 import com.example.xfash.pojo.Result;
@@ -43,6 +44,7 @@ public class DeptController {
 //        return Result.success();
 //    }
     //方式三 省略@RequestParam 前端请求参数和服务端方法参数必须一致可省略
+    @Log
     @DeleteMapping
     public Result delete(Integer id) {
 //        System.out.println("根据id删除部门：" + id);
@@ -52,6 +54,7 @@ public class DeptController {
     }
 
     //增加部门
+    @Log
     @PostMapping
     public Result insert(@RequestBody Dept name) {
 //        System.out.println("根据名字添加部门："+name);
@@ -70,6 +73,7 @@ public class DeptController {
     }
 
     //修改部门
+    @Log
     @PutMapping
     public Result update(@RequestBody Dept dept) {
 //        System.out.println("修改部门："+dept);

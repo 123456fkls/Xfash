@@ -1,6 +1,8 @@
 package com.example.xfash.Filter;
 
+import com.example.xfash.Utils.CurrentHolder;
 import com.example.xfash.Utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 
 @Slf4j
-//@WebFilter(urlPatterns = "/*")
+@WebFilter(urlPatterns = "/*")
 public class TokenFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -39,7 +41,10 @@ public class TokenFilter implements Filter {
 
         //5.解析token，失败返回401
         try {
-            JwtUtils.parseToken(token);
+            Claims claims = JwtUtils.parseToken(token);
+            Integer empId = Integer.valueOf(claims.get("id").toString());
+            CurrentHolder.setCurrentId(empId);
+            log.info("当前用户id：{},将其存入ThreadLocal", empId);
         } catch (Exception e) {
             log.info("令牌错误");
             response.setStatus(401);
@@ -48,5 +53,7 @@ public class TokenFilter implements Filter {
         //6.放行
         log.info("令牌合法,放行");
         filterChain.doFilter(request, response);
+        //7.删除ThreadLocal数据
+        CurrentHolder.remove();
     }
 }
