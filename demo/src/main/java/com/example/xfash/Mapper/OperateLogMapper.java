@@ -1,8 +1,11 @@
 package com.example.xfash.Mapper;
 
 import com.example.xfash.pojo.OperateLog;
+import com.example.xfash.pojo.OperateLogParm;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface OperateLogMapper {
@@ -12,4 +15,5 @@ public interface OperateLogMapper {
             "values (#{operateEmpId}, #{operateTime}, #{className}, #{methodName}, #{methodParams}, #{returnValue}, #{costTime});")
     public void insert(OperateLog log);
 
+    List<OperateLog> list(OperateLogParm operateLogParm);
 }
