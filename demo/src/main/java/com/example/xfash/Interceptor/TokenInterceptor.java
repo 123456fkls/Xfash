@@ -4,6 +4,7 @@ import com.example.xfash.Utils.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Component
 @Slf4j
 public class TokenInterceptor implements HandlerInterceptor {
+    @Autowired
+    private JwtUtils jwtUtils;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -36,7 +39,7 @@ public class TokenInterceptor implements HandlerInterceptor {
 
         //5.解析token，失败返回401
         try {
-            JwtUtils.parseToken(token);
+            jwtUtils.parseToken(token);
         } catch (Exception e) {
             log.info("令牌错误");
             response.setStatus(401);

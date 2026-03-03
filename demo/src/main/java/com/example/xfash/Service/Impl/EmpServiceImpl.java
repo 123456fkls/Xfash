@@ -30,6 +30,8 @@ public class EmpServiceImpl implements EmpService {
     private EmpExprMapper empExprMapper;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtUtils jwtUtils;
 
     //    //原始分页查询操作
 //    @Override
@@ -144,7 +146,7 @@ public class EmpServiceImpl implements EmpService {
                 log.info("登录成功：{}", e);
                 //生成jwt令牌
                 Map<String, Object> claims = Map.of("id", e.getId(), "username", e.getUsername(), "name", e.getName());
-                String jwt = JwtUtils.generateToken(claims);
+                String jwt = jwtUtils.generateToken( claims);
 
                 return new LoginInfo(e.getId(), e.getUsername(), e.getName(), jwt);
             }

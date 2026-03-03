@@ -1,6 +1,7 @@
 package com.example.xfash.Controller;
 
 import com.example.xfash.Service.EmpService;
+import com.example.xfash.Utils.JwtUtils;
 import com.example.xfash.pojo.Emp;
 import com.example.xfash.pojo.LoginInfo;
 import com.example.xfash.pojo.Result;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
     @Autowired
     private EmpService empService;
+    @Autowired
+    private JwtUtils jwtUtils;
     // 登录
     @PostMapping("/login")
     public Result login(@RequestBody Emp emp) {

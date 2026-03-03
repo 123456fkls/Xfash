@@ -22,3 +22,7 @@ aliyun:
     endpoint: https://oss-cn-beijing.aliyuncs.com
     bucket-name: fish-xfash
     region: cn-beijing
+# JWT 配置
+jwt:
+  secret-key: XFsh@2026SecretKey!Secure#Powerful$Key%9876
+  expiration: 43200000  # 12 小时（毫秒）
