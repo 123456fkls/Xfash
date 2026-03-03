@@ -11,8 +11,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -31,31 +29,30 @@ public class OperateLogAspect {
     @Around("@annotation(com.example.xfash.Anno.Log)")
     public Object recordOperateLog(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
-        // 获取方法签名
 
-        //执行目标 方法
+        String methodName = joinPoint.getSignature().getName();
+        String className = joinPoint.getTarget().getClass().getName();
+
+        log.info("开始执行操作：{}.{}", className, methodName);
+
         Object result = joinPoint.proceed();
 
-        // 计算耗时
         long costTime = System.currentTimeMillis() - startTime;
-        //构建日志实体
         OperateLog olog = new OperateLog();
         olog.setOperateEmpId(getCurrentUserId());
         olog.setOperateTime(LocalDateTime.now());
-        olog.setClassName(joinPoint.getTarget().getClass().getName());
-        olog.setMethodName(joinPoint.getSignature().getName());
+        olog.setClassName(className);
+        olog.setMethodName(methodName);
         olog.setMethodParams(Arrays.toString(joinPoint.getArgs()));
         olog.setReturnValue(result != null ? result.toString() : "void");
         olog.setCostTime(costTime);
-        //保存日志
-        log.info("记录操作日志：{}", log);
+
+        log.info("操作完成：{}.{}, 耗时：{}ms", className, methodName, costTime);
         operateLogMapper.insert(olog);
         return result;
     }
 
     private Integer getCurrentUserId() {
-       return CurrentHolder.getCurrentId();
+        return CurrentHolder.getCurrentId();
     }
-
-
 }
