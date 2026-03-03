@@ -91,18 +91,23 @@
             <version>3.0.5</version>
             <scope>test</scope>
         </dependency>
-<!--        JWT依赖-->
+        <!--        JWT依赖-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
-<!--        aop-->
+        <!--        aop-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
+        <!--       BCrypt 加密依赖 (独立包，不需要整个 Spring Security)-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>6.5.6</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -49,6 +49,9 @@ public interface EmpMapper {
     List<Emp> empList();
 
     //登录
-    @Select("select id,username,name from emp where username = #{username} and password = #{password}")
-    Emp getByUsernameAndPassword(Emp emp);
+    @Select("select * from emp where username = #{username}")
+    Emp getByUsername(String username);
+
+    @Select("select id,username,name from emp where username = #{username}")
+    Emp getByid(Integer id);
 }
