@@ -1,5 +1,6 @@
 package com.example.xfash.Service.Impl;
 
+import com.example.xfash.Exception.BusinessException;
 import com.example.xfash.Mapper.StudentMapper;
 import com.example.xfash.Service.StudentService;
 import com.example.xfash.pojo.PageResult;
@@ -29,35 +30,70 @@ public class StudentServiceImpl implements StudentService {
         Page<Student> p = (Page<Student>) stuList;
         return new PageResult<Student>(p.getTotal(), p.getResult());
     }
-//增
+
+    //增
     @Override
     public void add(Student student) {
+        if (student == null) {
+            throw new BusinessException("学生信息不能为空");
+        }
         student.setCreateTime(LocalDateTime.now());
         student.setUpdateTime(LocalDateTime.now());
         studentMapper.add(student);
 
     }
-//根据id查询
+
+    //根据id查询
     @Override
     public Student getById(Integer id) {
-        return studentMapper.getById(id);
+        if (id == null) {
+            throw new BusinessException("学生 ID 不能为空");
+        }
+        Student student = studentMapper.getById(id);
+        if (student == null) {
+            throw new BusinessException("学生不存在");
+        }
+        return student;
     }
 
     @Override
     public void update(Student student) {
+        if (student == null || student.getId() == null) {
+            throw new BusinessException("学生 ID 不能为空");
+        }
+        Student existingStudent = studentMapper.getById(student.getId());
+        if (existingStudent == null) {
+            throw new BusinessException("学生不存在");
+        }
         student.setUpdateTime(LocalDateTime.now());
         studentMapper.update(student);
     }
 
     @Override
     public void delete(Integer id) {
+        if (id == null) {
+            throw new BusinessException("学生 ID 不能为空");
+        }
+        Student student = studentMapper.getById(id);
+        if (student == null) {
+            throw new BusinessException("学生不存在");
+        }
         studentMapper.delete(id);
-
     }
+
 
     @Override
     public void violation(Integer id, Integer score) {
+        if (id == null) {
+            throw new BusinessException("学生 ID 不能为空");
+        }
+        if (score == null) {
+            throw new BusinessException("违纪分数不能为空");
+        }
+        Student student = studentMapper.getById(id);
+        if (student == null) {
+            throw new BusinessException("学生不存在");
+        }
         studentMapper.violation(id, score);
-
     }
 }

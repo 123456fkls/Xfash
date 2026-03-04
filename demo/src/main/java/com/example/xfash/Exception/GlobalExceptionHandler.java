@@ -6,11 +6,23 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 //全局异常处理器
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    @ExceptionHandler
+    public Result handleBusinessException(BusinessException e) {
+        log.error("业务异常：{}", e.getMessage());
+        return Result.error(e.getMessage());
+    }
+
+    @ExceptionHandler
+    public Result handleNoHandlerFoundException(NoHandlerFoundException e) {
+        log.error("404 错误：{}", e.getRequestURL());
+        return Result.error("请求的资源不存在");
+    }
     @ExceptionHandler
     public Result handleDuplicateKeyException(DuplicateKeyException e) {
         log.error("出错啦!你现在满意了吧！", e);

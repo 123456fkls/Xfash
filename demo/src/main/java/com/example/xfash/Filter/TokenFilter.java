@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Slf4j
 @WebFilter(urlPatterns = "/*")
@@ -36,6 +37,11 @@ public class TokenFilter implements Filter {
         if (token == null || token.isEmpty()) {
             log.info("令牌为空");
             response.setStatus(401);
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.write("{\"code\":1,\"msg\":\"未登录，请先登录\",\"data\":null}");
+            writer.flush();
+            writer.close();
             return;
         }
 
@@ -45,8 +51,13 @@ public class TokenFilter implements Filter {
             CurrentHolder.setCurrentId(empId);
             log.info("当前用户 id：{},将其存入 ThreadLocal", empId);
         } catch (Exception e) {
-            log.info("令牌错误");
+            log.info("令牌错误：{}", e.getMessage());
             response.setStatus(401);
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter writer = response.getWriter();
+            writer.write("{\"code\":1,\"msg\":\"令牌无效或已过期\",\"data\":null}");
+            writer.flush();
+            writer.close();
             return;
         }
 

@@ -28,5 +28,4 @@ public class Result {
         result.msg = msg;
         return result;
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.xfash.Service.Impl;
 
+import com.example.xfash.Exception.BusinessException;
 import com.example.xfash.Mapper.ClazzMapper;
 import com.example.xfash.Mapper.DeptMapper;
 import com.example.xfash.Service.ClazzService;
@@ -33,6 +34,9 @@ public class ClazzServiceImpl implements ClazzService {
     //增
     @Override
     public void add(Clazz clazz) {
+        if (clazz == null) {
+            throw new BusinessException("班级信息不能为空");
+        }
         clazz.setCreateTime(LocalDateTime.now());
         clazz.setUpdateTime(LocalDateTime.now());
         clazzMapper.add(clazz);
@@ -41,18 +45,39 @@ public class ClazzServiceImpl implements ClazzService {
     //根据id查询
     @Override
     public Clazz getById(Integer id) {
-        return clazzMapper.getById(id);
+        if (id == null) {
+            throw new BusinessException("班级 ID 不能为空");
+        }
+        Clazz clazz = clazzMapper.getById(id);
+        if (clazz == null) {
+            throw new BusinessException("班级不存在");
+        }
+        return clazz;
     }
 
     //改
     @Override
     public void update(Clazz clazz) {
+        if (clazz == null || clazz.getId() == null) {
+            throw new BusinessException("班级 ID 不能为空");
+        }
+        Clazz existingClazz = clazzMapper.getById(clazz.getId());
+        if (existingClazz == null) {
+            throw new BusinessException("班级不存在");
+        }
         clazz.setUpdateTime(LocalDateTime.now());
         clazzMapper.update(clazz);
     }
 
     @Override
     public void delete(Integer id) {
+        if (id == null) {
+            throw new BusinessException("班级 ID 不能为空");
+        }
+        Clazz clazz = clazzMapper.getById(id);
+        if (clazz == null) {
+            throw new BusinessException("班级不存在");
+        }
         clazzMapper.delete(id);
     }
 
