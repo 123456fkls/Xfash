@@ -8,6 +8,7 @@ import com.example.xfash.pojo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -23,7 +24,7 @@ public class EmpController {
     private EmpService empService;
 
     @GetMapping
-    public Result page(EmpQueryParam empQueryParam) {
+    public Result page(@Validated EmpQueryParam empQueryParam) {
         log.info("分页查询:{}", empQueryParam);
         PageResult<Emp> pageResult = empService.page(empQueryParam);
         return Result.success(pageResult);
@@ -31,7 +32,7 @@ public class EmpController {
 
     //新增
     @PostMapping
-    public Result save(@RequestBody Emp emp) {
+    public Result save(@RequestBody @Validated Emp emp) {
         log.info("新增员工:{}", emp);
         empService.save(emp);
         return Result.success();
@@ -50,21 +51,24 @@ public class EmpController {
         empService.delete(ids);
         return Result.success();
     }
+
     //修改（1）
     // 查询回显
-    @GetMapping ("/{id}")
-    public Result getInfo(@PathVariable Integer id ) {
+    @GetMapping("/{id}")
+    public Result getInfo(@PathVariable Integer id) {
         log.info("根据Id查询员工:{}", id);
         Emp emp = empService.getInfo(id);
         return Result.success(emp);
     }
+
     //修改（2）
     @PutMapping
-    public Result update(@RequestBody Emp emp) {
+    public Result update(@RequestBody @Validated Emp emp) {
         log.info("修改员工:{}", emp);
         empService.update(emp);
         return Result.success();
     }
+
     //查询所有员工
     @GetMapping("/list")
     public Result list() {

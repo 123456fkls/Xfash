@@ -4,6 +4,7 @@ import com.example.xfash.Service.ClazzService;
 import com.example.xfash.pojo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class ClazzController {
 
     //查
     @GetMapping
-    public Result page(ClazzQueryParm clazzQueryParm) {
+    public Result page(@Validated ClazzQueryParm clazzQueryParm) {
         log.info("分页查询:{}", clazzQueryParm);
         PageResult<Clazz> clazzList = clazzService.page(clazzQueryParm);
         return Result.success(clazzList);
@@ -26,7 +27,7 @@ public class ClazzController {
 
     //增
     @PostMapping
-    public Result add(@RequestBody Clazz clazz) {
+    public Result add(@RequestBody @Validated Clazz clazz) {
         log.info("新增:{}", clazz);
         clazzService.add(clazz);
         return Result.success();
@@ -41,7 +42,7 @@ public class ClazzController {
     }
     //改
     @PutMapping
-    public Result update(@RequestBody Clazz clazz) {
+    public Result update(@RequestBody @Validated Clazz clazz) {
         log.info("修改:{}", clazz);
         clazzService.update(clazz);
         return Result.success();

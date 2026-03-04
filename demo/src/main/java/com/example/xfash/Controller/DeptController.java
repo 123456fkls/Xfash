@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import lombok.extern.slf4j.XSlf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,7 +57,7 @@ public class DeptController {
     //增加部门
     @Log
     @PostMapping
-    public Result insert(@RequestBody Dept name) {
+    public Result insert(@RequestBody @Validated Dept name) {
 //        System.out.println("根据名字添加部门："+name);
         log.info("根据名字添加部门：{}", name);
         deptService.insert(name);
@@ -75,7 +76,7 @@ public class DeptController {
     //修改部门
     @Log
     @PutMapping
-    public Result update(@RequestBody Dept dept) {
+    public Result update(@RequestBody @Validated Dept dept) {
 //        System.out.println("修改部门："+dept);
         log.info("修改部门：{}", dept);
         deptService.update(dept);

@@ -7,6 +7,7 @@ import com.example.xfash.pojo.Student;
 import com.example.xfash.pojo.StudentQueryParm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -17,14 +18,14 @@ public class StudentController {
     private StudentService studentService;
     //查
     @GetMapping
-    public Result page(StudentQueryParm studentQueryParm) {
+    public Result page(@Validated StudentQueryParm studentQueryParm) {
         log.info("分页查询:{}", studentQueryParm);
         PageResult<Student> studentList = studentService.page(studentQueryParm);
         return Result.success(studentList);
     }
     //增
     @PostMapping
-    public Result add(@RequestBody Student student) {
+    public Result add(@RequestBody @Validated Student student) {
         log.info("新增:{}", student);
         studentService.add(student);
         return Result.success();
@@ -38,7 +39,7 @@ public class StudentController {
     }
     //改
     @PutMapping
-    public Result update(@RequestBody Student student) {
+    public Result update(@RequestBody @Validated Student student) {
         log.info("修改:{}", student);
         studentService.update(student);
         return Result.success();
